@@ -27,9 +27,9 @@ const MetaInfo = styled.div`
 `;
 
 // align 'Favorites' to the right on large screens
-const UserActions = styled.div`
-  margin-left: auto;
-`;
+// const UserActions = styled.div`
+//   margin-left: auto;
+// `;
 
 const Note = ({ note }) => {
   //   const { loading, error, data } = useQuery(IS_LOGGED_IN);
@@ -53,11 +53,13 @@ const Note = ({ note }) => {
           {format(parseISO(note.createdAt), `MMM eo yyyy`)}
         </MetaInfo>
 
-        <UserActions>{/* <NoteUser note={note} /> */}</UserActions>
+        {/* <UserActions>
+          <NoteUser note={note} />
+        </UserActions> */}
 
-        <UserActions>
+        {/* <UserActions>
           <em>Favorites:</em> {note.favoriteCount}
-        </UserActions>
+        </UserActions> */}
       </MetaData>
       <ReactMarkdown children={note.content} />
     </StyledNote>
