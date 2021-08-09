@@ -1,8 +1,8 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
 import Note from "../components/Note";
+import { useParams } from "react-router-dom";
 
-// this query does not work. not defined in the back?
 const GET_NOTE = gql`
   query note($id: ID!) {
     note(id: $id) {
@@ -19,13 +19,14 @@ const GET_NOTE = gql`
   }
 `;
 
-const NotePage = (props) => {
+const NotePage = () => {
   // store the id found in the url as a variable
-  let id = props.match.params.id;
+  const { id } = useParams();
 
   const { loading, error, data } = useQuery(GET_NOTE, { variables: { id } });
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error! Note not found</p>;
+  console.log(data);
 
   // if the data is successful, display the data in our UI
   return <Note note={data.note} />;
